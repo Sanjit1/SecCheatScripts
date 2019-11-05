@@ -1,0 +1,165 @@
+echo -e '\e[34m'
+echo '  /$$$$$$                          /$$   /$$                                   '
+echo ' /$$__  $$                        |__/  | $$                                   '
+echo '| $$  \__/  /$$$$$$  /$$$$$$$  /$$ /$$ /$$$$$$                                 '
+echo '|  $$$$$$  |____  $$| $$__  $$|__/| $$|_  $$_/                                 '
+echo ' \____  $$  /$$$$$$$| $$  \ $$ /$$| $$  | $$                                   '
+echo ' /$$  \ $$ /$$__  $$| $$  | $$| $$| $$  | $$ /$$                               '
+echo '|  $$$$$$/|  $$$$$$$| $$  | $$| $$| $$  |  $$$$/                               '
+echo ' \______/  \_______/|__/  |__/| $$|__/   \___/                                 '
+echo '                         /$$  | $$                                             '
+echo '                        |  $$$$$$/                                             '
+echo '                         \______/                                              '
+echo '  /$$$$$$            /$$                           /$$$$$$$             /$$    '
+echo ' /$$__  $$          | $$                          | $$__  $$           | $$    '
+echo '| $$  \__/ /$$   /$$| $$$$$$$   /$$$$$$   /$$$$$$ | $$  \ $$ /$$$$$$  /$$$$$$  '
+echo '| $$      | $$  | $$| $$__  $$ /$$__  $$ /$$__  $$| $$$$$$$/|____  $$|_  $$_/  '
+echo '| $$      | $$  | $$| $$  \ $$| $$$$$$$$| $$  \__/| $$____/  /$$$$$$$  | $$    '
+echo '| $$    $$| $$  | $$| $$  | $$| $$_____/| $$      | $$      /$$__  $$  | $$ /$$'
+echo '|  $$$$$$/|  $$$$$$$| $$$$$$$/|  $$$$$$$| $$      | $$     |  $$$$$$$  |  $$$$/'
+echo ' \______/  \____  $$|_______/  \_______/|__/      |__/      \_______/   \___/  '
+echo '           /$$  | $$                                                           '
+echo '          |  $$$$$$/                                                           '
+echo '           \______/                                                            '
+echo '  /$$$$$$                      /$$             /$$                             '
+echo ' /$$__  $$                    |__/            | $$                             '
+echo '| $$  \__/  /$$$$$$$  /$$$$$$  /$$  /$$$$$$  /$$$$$$   /$$$$$$$                '
+echo '|  $$$$$$  /$$_____/ /$$__  $$| $$ /$$__  $$|_  $$_/  /$$_____/                '
+echo ' \____  $$| $$      | $$  \__/| $$| $$  \ $$  | $$   |  $$$$$$                 '
+echo ' /$$  \ $$| $$      | $$      | $$| $$  | $$  | $$ /$$\____  $$                '
+echo '|  $$$$$$/|  $$$$$$$| $$      | $$| $$$$$$$/  |  $$$$//$$$$$$$/                '
+echo ' \______/  \_______/|__/      |__/| $$____/    \___/ |_______/                 '
+echo '                                  | $$                                         '
+echo '                                  | $$                                         '
+echo '                                  |__/                                         '
+
+sleep 1
+
+echo -e '\e[0m'
+echo ''
+echo 'Hi'
+
+sleep .5
+
+echo 'This is a shell script that is designed to give you a couple of free points on cyber patriot'
+
+sleep .5
+
+echo ''
+echo 'Delete users(Give Username seperated with " "(which is a space))'
+
+read userlist
+
+for w in $userlist; do
+    sudo -r userdel $w
+done
+
+echo 'Successfully Deleted all trash users    I guess'
+
+sleep .5
+
+echo 'Installing openssl do not ask why'
+
+sleep .5
+
+sudo apt-get install libssl-dev
+
+sleep .5
+
+echo 'Change Passwords(Give Username seperated with " "(which is a spce))'
+echo 'Dont worry I will echo a new (and secure) password'
+echo -e 'You will have to enter the password that I tell you \e[131mCAREFULLY\e[0m, and then \e[131mNOTE\e[0m it down.'
+
+sleep .5
+
+read usersWhoAreIdiots
+
+for w in $usersWhoAreIdiots; do
+    openssl rand –base64 10
+    sudo passwd $w
+done
+
+sleep .5
+
+echo 'Enabling Firewall'
+
+sudo ufw enable
+
+sleep .5
+
+echo 'Check if FTP is enabled'
+
+sleep 1
+
+service --status-all
+
+sleep .5
+
+echo 'Is that piece of Garbage enabled, and you wanna disable it? use y or n'
+
+read disableFTP
+
+if [$disableFTP == y]
+then
+    service --status-all
+    echo 'did it work? I hope it did'
+else
+    echo 'OK wont do it'
+fi
+
+sleep 1
+
+echo 'Time to remove prohibited software.'
+
+sleep 1
+
+echo 'Wait.. '
+
+sleep 3
+
+echo 'Uh oh this is not good!'
+
+sleep 3
+
+echo 'oh sh** we screwed up'
+
+sleep 4
+
+echo 'Nah just joking Sorry.'
+
+sleep .5
+
+echo 'Now lests get back to where we were'
+
+echo 'Tell me what softwaree we need to remove (Give appname seperated with " "(which is a space))'
+
+read badApps
+
+for w in $badApps; do
+    sudo apt-get remove $w
+done
+
+
+echo 'I took care of most things'
+
+sleep 1
+
+echo 'Now you need to do stuff too, GUI stuff'
+
+echo 'Delete a person who aint an admin'
+echo 'Set daily updates'
+echo 'Install updates from important security updates'
+echo 'Firefox popup blocker'
+echo 'Remove prohibited files'
+
+sleep 1
+
+echo 'and...'
+
+sleep 1.5
+
+echo 'Follow me on Github @Sanjit1'
+
+sleep .5
+
+echo 'NO like seriously I need followers'
