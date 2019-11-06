@@ -51,7 +51,7 @@ echo 'Delete users(Give Username seperated with " "(which is a space))'
 read userlist
 
 for w in $userlist; do
-    sudo -r userdel $w
+    sudo userdel -r $w
 done
 
 echo 'Successfully Deleted all trash users    I guess'
@@ -99,13 +99,9 @@ echo 'Is that piece of Garbage enabled, and you wanna disable it? use y or n'
 
 read disableFTP
 
-if [$disableFTP == y]
-then
-    service --status-all
-    echo 'did it work? I hope it did'
-else
-    echo 'OK wont do it'
-fi
+sudo apt-get remove pureftp
+
+echo 'did it work? I hope it did'
 
 sleep 1
 
