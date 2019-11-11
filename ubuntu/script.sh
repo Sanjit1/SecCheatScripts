@@ -56,6 +56,13 @@ done
 
 echo 'Successfully Deleted all trash users    I guess'
 
+
+
+
+
+
+
+
 sleep .5
 
 echo 'Installing openssl do not ask why'
@@ -68,14 +75,14 @@ sleep .5
 
 echo 'Change Passwords(Give Username seperated with " "(which is a spce))'
 echo 'Dont worry I will echo a new (and secure) password'
-echo -e 'You will have to enter the password that I tell you \e[131mCAREFULLY\e[0m, and then \e[131mNOTE\e[0m it down.'
+echo -e 'You will have to re-enter the password that I tell you \e[131mCAREFULLY\e[0m, and then \e[131mNOTE\e[0m it down.'
 
 sleep .5
 
 read usersWhoAreIdiots
 
 for w in $usersWhoAreIdiots; do
-    openssl rand –base64 10
+    openssl rand -base64 10
     sudo passwd $w
 done
 
@@ -97,9 +104,19 @@ sleep .5
 
 echo 'Is that piece of Garbage enabled, and you wanna disable it? use y or n'
 
-read disableFTP
+read -p "Do you wish to install this program y/n?" yn
+case $yn in
+    [Yy]* ) sudo apt-get remove pureftp;;
+    [Nn]* ) echo OK wont remove FTP;;
+    * ) echo "Please answer y or n."
+        read -p "Do you wish to install this program y/n?" yn
+        case $yn in
+            [Yy]* ) sudo apt-get remove pureftp;;
+            [Nn]* ) echo OK wont remove FTP;;
+            * ) echo "Your f**king stupid.";;
+        esac;;
+esac
 
-sudo apt-get remove pureftp
 
 echo 'did it work? I hope it did'
 
