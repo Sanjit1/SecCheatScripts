@@ -114,7 +114,7 @@ case $yn in
             [Yy]* ) sudo apt-get remove pureftp;;
             [Nn]* ) echo OK wont remove FTP;;
             * ) echo "Your f**king stupid.";;
-        esac;;
+    esac;;
 esac
 
 
