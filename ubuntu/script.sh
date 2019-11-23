@@ -1,3 +1,7 @@
+# TODO: Add variables
+
+
+
 echo -e '\e[34m'
 echo '  /$$$$$$                          /$$   /$$                                   '
 echo ' /$$__  $$                        |__/  | $$                                   '
@@ -44,6 +48,37 @@ sleep .5
 echo 'This is a shell script that is designed to give you a couple of free points on cyber patriot'
 
 sleep .5
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 echo ''
 echo 'Delete users(Give Username seperated with " "(which is a space))'
