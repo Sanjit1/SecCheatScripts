@@ -50,6 +50,11 @@ echo 'This is a shell script that is designed to give you a couple of free point
 sleep .5
 
 
+sudo sed -i '/PermitRootLogin/d' /etc/ssh/ssh_config
+sudo bash -c 'cat <<EOT >> /etc/ssh/ssh_config
+PermitRootLogin no
+EOT'
+
 
 
 
