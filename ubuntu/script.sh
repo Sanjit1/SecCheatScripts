@@ -1,4 +1,12 @@
-# TODO: Add variables
+# ! Pre Show-off
+# Todo: Change the users based off the readme.
+# * Do it
+# Weed : there is a reazon i have a billion colors here
+authorizedUserNames=('batman' 'STD' 'chowman')
+unauthorizedUserNames=('Joker' 'Banana' 'homer' 'Jonathan')
+badPasswordPPl=('chowman')
+combinedUsers=('batman' 'STD' 'chowman' 'Joker' 'Banana' 'homer' 'Jonathan')
+# ! Sorry folks I wont spend my time stackoverflowing how to combine 2 arrays DIY
 
 
 

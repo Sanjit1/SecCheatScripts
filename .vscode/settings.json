@@ -1,0 +1,11 @@
+{
+    "better-comments.multilineComments": true,
+    "better-comments.tags": [
+        {
+            "tag": "Weed",
+            "color": "#EFEF01",
+            "strikethrough": false,
+            "backgroundColor": "transparent"
+        }
+    ]
+}
