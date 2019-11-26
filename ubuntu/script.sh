@@ -6,7 +6,10 @@ authorizedUserNames=('batman' 'STD' 'chowman')
 unauthorizedUserNames=('Joker' 'Banana' 'homer' 'Jonathan')
 badPasswordPPl=('chowman')
 combinedUsers=('batman' 'STD' 'chowman' 'Joker' 'Banana' 'homer' 'Jonathan')
+newPasswd='sachinSucks'
 # ! Sorry folks I wont spend my time stackoverflowing how to combine 2 arrays DIY
+
+
 
 
 
@@ -58,14 +61,26 @@ echo 'This is a shell script that is designed to give you a couple of free point
 sleep .5
 
 
+
+
+
+# ! Post Show-off
+# * More Color
+
 sudo sed -i '/PermitRootLogin/d' /etc/ssh/ssh_config
+# Remove all occurances of PermitRootLogin, to redo it ourselves.
 sudo bash -c 'cat <<EOT >> /etc/ssh/ssh_config
-PermitRootLogin no
+    PermitRootLogin no
+EOT'
+# Add this line to the end of the file to disallow RootLogin
+
+sudo bash -c 'cat <<EOT >> /etc/lightdm/users.conf
+allow-guests=false
 EOT'
 
 
 
-
+# TODO: Add sudo restrat lightdm tu tha code
 
 
 
