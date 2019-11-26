@@ -2,11 +2,13 @@
 # Todo: Change the users based off the readme.
 # * Do it
 # Weed : there is a reazon i have a billion colors here
-authorizedUserNames=('batman' 'STD' 'chowman')
-unauthorizedUserNames=('Joker' 'Banana' 'homer' 'Jonathan')
+authorizedUserNames=('batman' 'std' 'chowman')
+unauthorizedUserNames=('joker' 'banana' 'homer' 'jonathan')
 badPasswordPPl=('chowman')
-combinedUsers=('batman' 'STD' 'chowman' 'Joker' 'Banana' 'homer' 'Jonathan')
+combinedUsers=('batman' 'std' 'chowman' 'joker' 'banana' 'homer' 'jonathan')
 newPasswd='sachinSucks'
+
+
 # ! Sorry folks I wont spend my time stackoverflowing how to combine 2 arrays DIY
 
 
@@ -64,8 +66,10 @@ sleep .5
 
 
 
+
+
+
 # ! Post Show-off
-# * More Color
 
 sudo sed -i '/PermitRootLogin/d' /etc/ssh/ssh_config
 # Remove all occurances of PermitRootLogin, to redo it ourselves.
@@ -80,7 +84,76 @@ EOT'
 
 
 
+l=$(grep "^UID_MIN" /etc/login.defs)
+l1=$(grep "^UID_MAX" /etc/login.defs)
+
+# ! Basically User Not Seperated Im tired of long var names
+actualUsers=($(awk -F':' -v "min=${l##UID_MIN}" -v "max=${l1##UID_MAX}" '{ if ( $3 >= min && $3 <= max ) print $1}' /etc/passwd))
+
+authNS=$(awk -F':' '{ if ($1=="sudo") print $4}' /etc/group)
+
+IFS=',' read -ra actualAuthUsers <<< "$authNS"
+
+for i in "${actualUsers[@]}"
+do
+    if [[ ! " ${combinedUsers[@]} " =~ " ${i} " ]]; then
+        sudo userdel -r $i
+	echo $i
+    fi
+done
+
+for i in "${actualAuthUsers[@]}"
+do
+    if [[ ! " ${authorizedUserNames[@]} " =~ " ${i} " ]]; then
+        sudo deluser $i adm
+	sudo deluser $i sudo
+	echo $i
+    fi
+done
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # TODO: Add sudo restrat lightdm tu tha code
+
+
+
+
+
+
 
 
 
