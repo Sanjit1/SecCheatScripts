@@ -14,3 +14,13 @@ This is a checklist for Ubuntu Kinda-ish:
  - TODO 4: Figure out how to secure ports if you feel like 
  - Disable Firefox popup stuff and if IE is supposed to be a f-ing alt(in 2 thousand f-ing 19(or 20 or whatever the f the year is)) then download it.
  - Try to do more shit randomly after the script is done running(you might have to go and keep saying yes to some operations, but ya)
+
+
+Curated List of checklists if you are bored: 
+Do not do stuff from the forty bot guy, unless it says TODO and then something, cuz the rest is scripted
+ - https://www.thefanclub.co.za/how-to/how-secure-ubuntu-1604-lts-server-part-1-basics
+ - The PDF in this folder
+ - https://github.com/Forty-Bot/linux-checklist
+ - https://www.process.st/server-security/
+ - https://cyber66th.wordpress.com/2016/11/19/ubuntu-checklist/
+ - https://www.digitalocean.com/community/tutorial_series/new-ubuntu-14-04-server-checklist
