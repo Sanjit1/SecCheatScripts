@@ -10,6 +10,8 @@ If your name is not Sanjit or Dhruv, you have push access, but are requested to 
  - Only edit your name under `Comp:` Projects
  - Have fun saving the Cyber Patriots computers from non deadly Viruses
 
+# Helpful Links
+- How to GitHub: https://product.hubspot.com/blog/git-and-github-tutorial-for-beginners
 
 ## Division by OS:
 - Windows
