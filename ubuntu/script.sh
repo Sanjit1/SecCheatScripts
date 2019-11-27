@@ -9,6 +9,13 @@ combinedUsers=('batman' 'std' 'chowman' 'joker' 'banana' 'homer' 'jonathan')
 newPasswd='sachinSucks'
 
 
+# Common Defaults
+# TODO: *service --status-all* and check legit services and add them here
+badBoys=('nmap' 'zenmap' 'Wireshark')
+disableFTP='nah'
+
+
+
 # ! Sorry folks I wont spend my time stackoverflowing how to combine 2 arrays DIY
 
 
@@ -64,12 +71,8 @@ sleep .5
 
 
 
-
-
-
-
-
 # ! Post Show-off
+
 
 sudo sed -i '/PermitRootLogin/d' /etc/ssh/ssh_config
 # Remove all occurances of PermitRootLogin, to redo it ourselves.
@@ -78,22 +81,17 @@ sudo bash -c 'cat <<EOT >> /etc/ssh/ssh_config
 EOT'
 # Add this line to the end of the file to disallow RootLogin
 
+
 sudo bash -c 'cat <<EOT >> /etc/lightdm/users.conf
 allow-guests=false
 EOT'
 
-
-
 l=$(grep "^UID_MIN" /etc/login.defs)
 l1=$(grep "^UID_MAX" /etc/login.defs)
-
 # ! Basically User Not Seperated Im tired of long var names
 actualUsers=($(awk -F':' -v "min=${l##UID_MIN}" -v "max=${l1##UID_MAX}" '{ if ( $3 >= min && $3 <= max ) print $1}' /etc/passwd))
-
 authNS=$(awk -F':' '{ if ($1=="sudo") print $4}' /etc/group)
-
 IFS=',' read -ra actualAuthUsers <<< "$authNS"
-
 for i in "${actualUsers[@]}"
 do
     if [[ ! " ${combinedUsers[@]} " =~ " ${i} " ]]; then
@@ -101,7 +99,6 @@ do
 	echo $i
     fi
 done
-
 for i in "${actualAuthUsers[@]}"
 do
     if [[ ! " ${authorizedUserNames[@]} " =~ " ${i} " ]]; then
@@ -112,146 +109,81 @@ do
 done
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# TODO: Add sudo restrat lightdm tu tha code
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-echo ''
-echo 'Delete users(Give Username seperated with " "(which is a space))'
-
-read userlist
-
-for w in $userlist; do
-    sudo userdel -r $w
+for i in "${badBoys[@]}"
+do
+    sudo apt-get remove $i
 done
-
-echo 'Successfully Deleted all trash users    I guess'
-
-
-
-
+if [[ "$disableFTP" == "yea" ]]; then
+    sudo apt-get remove pure-ftpd
+    sudo apt-get remove pureftp
+fi
 
 
+sudo sed -i 'PASS_MIN_DAYS' /etc/login.defs
+sudo sed -i 'PASS_MAX_DAYS' /etc/login.defs
+sudo sed -i 'PASS_WARN_AGE' /etc/login.defs
+# Remove all occurances of Password expiration stuff, to redo it ourselves.
 
 
-sleep .5
+sudo bash -c 'cat <<EOT >> /etc/login.defs
+PASS_MIN_DAYS 7
+PASS_MAX_DAYS 90
+PASS_WARN_AGE 14
+EOT'
+# Re-add out own secure password stuff
 
-echo 'Installing openssl do not ask why'
 
-sleep .5
+sudo apt-get install libpam-cracklib
+sudo sed -i '/pam_unix/s/$/ minlen=8 remember=5/' /etc/pam.d/common-password
+sudo sed -i '/cracklib/s/$/ ucredit=-1 lcredit=-1 dcredit=-1 ocredit=-/' /etc/pam.d/common-password
+sudo sed -i '/pam_tally2/s/$/ deny=5 unlock_time=1800/' /etc/pam.d/common-auth
+chpasswd
 
-sudo apt-get install libssl-dev
 
-sleep .5
+# ! GO do this shit from GUI do not be lazy
 
-echo 'Change Passwords(Give Username seperated with " "(which is a spce))'
-echo 'Dont worry I will echo a new (and secure) password'
-echo -e 'You will have to re-enter the password that I tell you \e[131mCAREFULLY\e[0m, and then \e[131mNOTE\e[0m it down.'
 
-sleep .5
+# TODO: Secure Ports
 
-read usersWhoAreIdiots
-
-for w in $usersWhoAreIdiots; do
-    openssl rand -base64 10
-    sudo passwd $w
-done
-
-sleep .5
-
-echo 'Enabling Firewall'
 
 sudo ufw enable
+sysctl -n net.ipv4.tcp_syncookies
+echo "net.ipv6.conf.all.disable_ipv6 = 1" | sudo tee -a /etc/sysctl.conf
+echo 0 | sudo tee /proc/sys/net/ipv4/ip_forward
+echo "nospoof on" | sudo tee -a /etc/host.conf
 
-sleep .5
 
-echo 'Check if FTP is enabled'
 
-sleep 1
+sudo apt-get update
+sudo apt-get upgrade
 
-service --status-all
+echo 'Google how to update services mentioned in readme'
 
-sleep .5
 
-echo 'Is that piece of Garbage enabled, and you wanna disable it? use y or n'
 
-read -p "Do you wish to install this program y/n?" yn
-case $yn in
-    [Yy]* ) sudo apt-get remove pureftp;;
-    [Nn]* ) echo OK wont remove FTP;;
-    * ) echo "Please answer y or n."
-        read -p "Do you wish to install this program y/n?" yn
-        case $yn in
-            [Yy]* ) sudo apt-get remove pureftp;;
-            [Nn]* ) echo OK wont remove FTP;;
-            * ) echo "Your f**king stupid.";;
-    esac;;
-esac
+sudo restrat lightdm
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 echo 'did it work? I hope it did'
