@@ -1,27 +1,24 @@
-# ! Pre Show-off
-# Todo: Change the users based off the readme.
+# SecB: Pre Show-off
+# Todo: Change the Variables based off the readme.
 # * Do it
 # Weed : there is a reazon i have a billion colors here
+# ? One more color?
+
+# SecB: Variable Def
 authorizedUserNames=('batman' 'std' 'chowman')
 unauthorizedUserNames=('joker' 'banana' 'homer' 'jonathan')
 badPasswordPPl=('chowman')
 combinedUsers=('batman' 'std' 'chowman' 'joker' 'banana' 'homer' 'jonathan')
-newPasswd='sachinSucks'
+# * Sorry folks I wont spend my time stackoverflowing how to combine 2 arrays DIY
 
-
-# Common Defaults
-# TODO: *service --status-all* and check legit services and add them here
+# * Common Defaults
 badBoys=('nmap' 'zenmap' 'Wireshark')
 disableFTP='nah'
+# SecE: Variable Def
+# SecE: Pre Show-off
 
 
-
-# ! Sorry folks I wont spend my time stackoverflowing how to combine 2 arrays DIY
-
-
-
-
-
+# SecB: Show-off
 echo -e '\e[34m'
 echo '  /$$$$$$                          /$$   /$$                                   '
 echo ' /$$__  $$                        |__/  | $$                                   '
@@ -56,39 +53,38 @@ echo ' \______/  \_______/|__/      |__/| $$____/    \___/ |_______/            
 echo '                                  | $$                                         '
 echo '                                  | $$                                         '
 echo '                                  |__/                                         '
-
 sleep 1
-
 echo -e '\e[0m'
 echo ''
 echo 'Hi'
-
 sleep .5
-
 echo 'This is a shell script that is designed to give you a couple of free points on cyber patriot'
-
 sleep .5
+# SecE: Show-off
 
 
+# SecB Post Show-off
 
-# ! Post Show-off
+# * Sections From checklist: https://github.com/Forty-Bot/linux-checklist
 
-
+# SecB: 3. Secure Port
 sudo sed -i '/PermitRootLogin/d' /etc/ssh/ssh_config
-# Remove all occurances of PermitRootLogin, to redo it ourselves.
 sudo bash -c 'cat <<EOT >> /etc/ssh/ssh_config
     PermitRootLogin no
 EOT'
-# Add this line to the end of the file to disallow RootLogin
+# SecE: 3
 
-
+# SecB: 4.Secure Users
+# SecB: i.Disable Guest User
 sudo bash -c 'cat <<EOT >> /etc/lightdm/users.conf
 allow-guests=false
 EOT'
+# * Sudo restart lightdm at the end
+# SecE: i
 
+# SecB: ii to v.Users Auth, Sudo and all other jackshit
 l=$(grep "^UID_MIN" /etc/login.defs)
 l1=$(grep "^UID_MAX" /etc/login.defs)
-# ! Basically User Not Seperated Im tired of long var names
 actualUsers=($(awk -F':' -v "min=${l##UID_MIN}" -v "max=${l1##UID_MAX}" '{ if ( $3 >= min && $3 <= max ) print $1}' /etc/passwd))
 authNS=$(awk -F':' '{ if ($1=="sudo") print $4}' /etc/group)
 IFS=',' read -ra actualAuthUsers <<< "$authNS"
@@ -107,8 +103,10 @@ do
 	echo $i
     fi
 done
+# SecE: ii to v
 
-
+# SecB: vi. Media Files Prohibited shit
+# TODO: DIY: Media files etc
 for i in "${badBoys[@]}"
 do
     sudo apt-get remove $i
@@ -117,29 +115,29 @@ if [[ "$disableFTP" == "yea" ]]; then
     sudo apt-get remove pure-ftpd
     sudo apt-get remove pureftp
 fi
+# SecE: vi
 
 
+# SecB: vii. Password Requirements
+# SecB: a
 sudo sed -i 'PASS_MIN_DAYS' /etc/login.defs
 sudo sed -i 'PASS_MAX_DAYS' /etc/login.defs
 sudo sed -i 'PASS_WARN_AGE' /etc/login.defs
-# Remove all occurances of Password expiration stuff, to redo it ourselves.
-
-
 sudo bash -c 'cat <<EOT >> /etc/login.defs
 PASS_MIN_DAYS 7
 PASS_MAX_DAYS 90
 PASS_WARN_AGE 14
 EOT'
-# Re-add out own secure password stuff
-
-
+# SecE: a
+# SecB: b to d
 sudo apt-get install libpam-cracklib
 sudo sed -i '/pam_unix/s/$/ minlen=8 remember=5/' /etc/pam.d/common-password
 sudo sed -i '/cracklib/s/$/ ucredit=-1 lcredit=-1 dcredit=-1 ocredit=-/' /etc/pam.d/common-password
 sudo sed -i '/pam_tally2/s/$/ deny=5 unlock_time=1800/' /etc/pam.d/common-auth
 chpasswd
+# SecE: b to d
 
-
+# SecB:
 # ! GO do this shit from GUI do not be lazy
 
 
@@ -162,28 +160,6 @@ echo 'Google how to update services mentioned in readme'
 
 
 sudo restrat lightdm
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 echo 'Wait.. '
