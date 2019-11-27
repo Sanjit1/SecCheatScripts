@@ -19,9 +19,9 @@ If your name is not Sanjit or Dhruv, you have push access, but are requested to 
 	- Josh
 - Linux
 	- Sanjit
+	- Shreyas
 	- Uv
 	- Vidhi
-	- Missing
 - Server:
 	- Adi
 	- Aniket
@@ -35,7 +35,7 @@ If your name is not Sanjit or Dhruv, you have push access, but are requested to 
 ###  Team 1:
  - Linux:
 	 -	Sanjit
-	 -	Missing
+	 -	Shreyas
  -	Windows:
 	 -	Dhruv
 	 -	Andrew
