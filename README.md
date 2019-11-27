@@ -3,6 +3,13 @@ Cyber Patriot cheat sheet and Scripts
 
 For each OS go into the folder, and look for Readme which is a script/checklist and look for a script file.
 
+# Rules:
+ - Unless Dhruv or Sanjit, do not push directly, just make a pull request.
+ - Unless Dhruv or Sanjit, do not make changes to projects, other than Projects which names start with `Comp:`. 
+ - Only edit your name under `Comp:` Projects
+ - Have fun saving the Cyber Patriots computers from non deadly Viruses
+
+
 # Helpful Links
 - How to GitHub: https://product.hubspot.com/blog/git-and-github-tutorial-for-beginners
 - What even is this?:  https://www.uscyberpatriot.org/competition/Competition-Overview/competition-overview
