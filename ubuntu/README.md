@@ -12,4 +12,5 @@ This is a checklist for Ubuntu Kinda-ish:
  - TODO 3: Go to settings and enable default update stuff
  - TODO 5(yes we skipped ahead, so stfu): If there were any services in the readme try to update it.
  - TODO 4: Figure out how to secure ports if you feel like 
+ - Disable Firefox popup stuff and if IE is supposed to be a f-ing alt(in 2 thousand f-ing 19(or 20 or whatever the f the year is)) then download it.
  - Try to do more shit randomly after the script is done running(you might have to go and keep saying yes to some operations, but ya)
