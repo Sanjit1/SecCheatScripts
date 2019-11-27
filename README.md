@@ -12,7 +12,7 @@ If your name is not Sanjit or Dhruv, you have push access, but are requested to 
 
 # Helpful Links
 - How to GitHub: https://product.hubspot.com/blog/git-and-github-tutorial-for-beginners
-- What even is this?:  https://www.uscyberpatriot.org/competition/Competition-Overview/competition-overview
+- What even is this?  https://www.uscyberpatriot.org/competition/Competition-Overview/competition-overview
 
 ## Division by OS:
 - Windows
