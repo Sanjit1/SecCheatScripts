@@ -7,7 +7,7 @@ If your name is not Sanjit or Dhruv, you have push access, but are requested to 
 # Rules:
  - Unless Dhruv or Sanjit, do not push directly, just make a pull request.
  - Unless Dhruv or Sanjit, do not make changes to projects, other than Projects which names start with `Comp:`. 
- - Only edit oyur name under `Comp:` Projects
+ - Only edit your name under `Comp:` Projects
  - Have fun saving the Cyber Patriots computers from non deadly Viruses
 
 
