@@ -1,5 +1,5 @@
 # SecB: Pre Show-off
-# Todo: Change the Variables based off the readme.
+# Todo: 1.Change the Variables based off the readme.
 # * Do it
 # Weed : there is a reazon i have a billion colors here
 # ? One more color?
@@ -106,7 +106,7 @@ done
 # SecE: ii to v
 
 # SecB: vi. Media Files Prohibited shit
-# TODO: DIY: Media files etc
+# TODO: 2.DIY: Media files etc
 for i in "${badBoys[@]}"
 do
     sudo apt-get remove $i
@@ -136,30 +136,37 @@ sudo sed -i '/cracklib/s/$/ ucredit=-1 lcredit=-1 dcredit=-1 ocredit=-/' /etc/pa
 sudo sed -i '/pam_tally2/s/$/ deny=5 unlock_time=1800/' /etc/pam.d/common-auth
 chpasswd
 # SecE: b to d
-
-# SecB:
-# ! GO do this shit from GUI do not be lazy
-
-
-# TODO: Secure Ports
+# SecE: vii
+# SecE: 4
 
 
+# SecB: 5
+# TODO: 3.GO do this shit from GUI do not be lazy
+# SecE: 5
+
+
+# SecB: 6
+# TODO: 4.Secure Ports
+# SecE: 6
+
+
+# SecB: 7. Secure Network
 sudo ufw enable
 sysctl -n net.ipv4.tcp_syncookies
 echo "net.ipv6.conf.all.disable_ipv6 = 1" | sudo tee -a /etc/sysctl.conf
 echo 0 | sudo tee /proc/sys/net/ipv4/ip_forward
 echo "nospoof on" | sudo tee -a /etc/host.conf
+# SecE: 7
 
 
-
+# SecB: 8
 sudo apt-get update
 sudo apt-get upgrade
+# TODO: 5.Google how to update services mentioned in readme
+# SecE 8
 
-echo 'Google how to update services mentioned in readme'
 
 
-
-sudo restrat lightdm
 
 
 echo 'Wait.. '
@@ -179,3 +186,6 @@ echo 'Nah just joking Sorry.'
 sleep .5
 
 echo 'Follow me on Github @Sanjit1'
+
+
+sudo restrat lightdm
