@@ -1,6 +1,7 @@
 # Ubuntu
 
 This is a checklist for Ubuntu Kinda-ish:
+ - Attempt to read this garbage
  - Do the Forensics questions
  - copy script.sh somewhere but do <ins>NOT</ins> run it.
  - TODO 1: Change Variables based off of the readme. Basically edit lines 8-16 based of the readme
