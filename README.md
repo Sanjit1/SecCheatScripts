@@ -5,8 +5,7 @@ For each OS go into the folder, and look for Readme which is a script/checklist 
 
 # Helpful Links
 - How to GitHub: https://product.hubspot.com/blog/git-and-github-tutorial-for-beginners
-- What even is this?:  https://www.uscyberpatriot.org/competition/Competition-Overview/competition-overview
-- What even is this?  https://www.uscyberpatriot.org/competition/Competition-Overview/competition-overview
+- Cyber Patriot:  https://www.uscyberpatriot.org/competition/Competition-Overview/competition-overview
 
 
 ## Division by OS:
