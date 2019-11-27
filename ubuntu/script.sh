@@ -186,14 +186,6 @@ sudo restrat lightdm
 
 
 
-echo 'did it work? I hope it did'
-
-sleep 1
-
-echo 'Time to remove prohibited software.'
-
-sleep 1
-
 echo 'Wait.. '
 
 sleep 3
@@ -204,43 +196,10 @@ sleep 3
 
 echo 'oh sh** we screwed up'
 
-sleep 4
+sleep 5
 
 echo 'Nah just joking Sorry.'
 
 sleep .5
 
-echo 'Now lests get back to where we were'
-
-echo 'Tell me what softwaree we need to remove (Give appname seperated with " "(which is a space))'
-
-read badApps
-
-for w in $badApps; do
-    sudo apt-get remove $w
-done
-
-
-echo 'I took care of most things'
-
-sleep 1
-
-echo 'Now you need to do stuff too, GUI stuff'
-
-echo 'Delete a person who aint an admin'
-echo 'Set daily updates'
-echo 'Install updates from important security updates'
-echo 'Firefox popup blocker'
-echo 'Remove prohibited files'
-
-sleep 1
-
-echo 'and...'
-
-sleep 1.5
-
 echo 'Follow me on Github @Sanjit1'
-
-sleep .5
-
-echo 'NO like seriously I need followers'
