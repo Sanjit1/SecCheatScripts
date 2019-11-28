@@ -163,6 +163,11 @@ echo "nospoof on" | sudo tee -a /etc/host.conf
 sudo apt-get update
 sudo apt-get upgrade
 # TODO: 5.Google how to update services mentioned in readme
+# ShellShock
+if [[ "echo $(env z="() { :; }; echo shit" bash -c "echo no")" == "shit" ]]; then
+    sudo apt-get autoclean
+    sudo apt-get install --only-upgrade bash
+fi
 # SecE 8
 
 
