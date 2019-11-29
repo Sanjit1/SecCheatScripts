@@ -147,6 +147,11 @@ chpasswd
 
 # SecB: 6
 # TODO: 4.Secure Ports
+sudo ufw status
+sudo ufw default deny incoming
+sudo ufw allow from 127.0.0.1/24 to any port 22 proto tcp
+sudo ufw enable
+sudo ufw status verbose
 # SecE: 6
 
 
