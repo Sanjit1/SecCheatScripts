@@ -10,8 +10,8 @@ This is a checklist for Ubuntu Kinda-ish:
  - chpasswd might be showing up rn(if conf then ask @Sanjit1): Enter and note passwords(Venkatsai passwords are the easiest to remember)
  - TODO 2: Look for stupid media files, and bad ass software then destroy it.
  - TODO 3: Go to settings and enable default update stuff
- - TODO 5(yes we skipped ahead, so stfu): If there were any services in the readme try to update it.
- - TODO 4: Figure out how to secure ports if you feel like 
+ - TODO 4: In the terminal go and `sudo ufw status verbose` and ensure you got points for completing securing ports else do it manually.
+ - TODO 5: If there were any services in the readme try to update it.
  - Disable Firefox popup stuff and if IE is supposed to be a f-ing alt(in 2 thousand f-ing 19(or 20 or whatever the f the year is)) then download it.
  - Try to do more shit randomly after the script is done running(you might have to go and keep saying yes to some operations, but ya)
 
