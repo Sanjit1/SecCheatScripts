@@ -147,11 +147,16 @@ chpasswd
 
 # SecB: 6
 # TODO: 4.Secure Ports
+sudo ufw enable
+sudo ufw default deny incoming
+sudo ufw allow from 127.0.0.1 to any port 631
+sudo ufw allow from 127.0.0.1 to any port 53
+# TODO: 5.sudo ufw status verbose
 # SecE: 6
 
 
 # SecB: 7. Secure Network
-sudo ufw enable
+# * sudo ufw enable has been moved to Section 6
 sysctl -n net.ipv4.tcp_syncookies
 echo "net.ipv6.conf.all.disable_ipv6 = 1" | sudo tee -a /etc/sysctl.conf
 echo 0 | sudo tee /proc/sys/net/ipv4/ip_forward
@@ -162,7 +167,7 @@ echo "nospoof on" | sudo tee -a /etc/host.conf
 # SecB: 8
 sudo apt-get update
 sudo apt-get upgrade
-# TODO: 5.Google how to update services mentioned in readme
+# TODO: 6.Google how to update services mentioned in readme
 # ShellShock
 if [[ "echo $(env z="() { :; }; echo shit" bash -c "echo no")" == "shit" ]]; then
     sudo apt-get autoclean
