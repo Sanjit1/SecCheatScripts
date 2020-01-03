@@ -68,10 +68,10 @@ sleep .5
 # * Sections From checklist: https://github.com/Forty-Bot/linux-checklist
 
 # SecB: 3. Secure Port
-sudo sed -i '/PermitRootLogin/d' /etc/ssh/ssh_config
-sudo bash -c 'cat <<EOT >> /etc/ssh/ssh_config
-    PermitRootLogin no
-EOT'
+#sudo sed -i '/PermitRootLogin/d' /etc/ssh/ssh_config
+#sudo bash -c 'cat <<EOT >> /etc/ssh/ssh_config
+#    PermitRootLogin no
+#EOT'
 # SecE: 3
 
 # SecB: 4.Secure Users
@@ -120,21 +120,21 @@ fi
 
 # SecB: vii. Password Requirements
 # SecB: a
-sudo sed -i 'PASS_MIN_DAYS' /etc/login.defs
-sudo sed -i 'PASS_MAX_DAYS' /etc/login.defs
-sudo sed -i 'PASS_WARN_AGE' /etc/login.defs
-sudo bash -c 'cat <<EOT >> /etc/login.defs
-PASS_MIN_DAYS 7
-PASS_MAX_DAYS 90
-PASS_WARN_AGE 14
-EOT'
+#sudo sed -i 'PASS_MIN_DAYS' /etc/login.defs
+#sudo sed -i 'PASS_MAX_DAYS' /etc/login.defs
+#sudo sed -i 'PASS_WARN_AGE' /etc/login.defs
+#sudo bash -c 'cat <<EOT >> /etc/login.defs
+#PASS_MIN_DAYS 7
+#PASS_MAX_DAYS 90
+#PASS_WARN_AGE 14
+#EOT'
 # SecE: a
 # SecB: b to d
-sudo apt-get install libpam-cracklib
-sudo sed -i '/pam_unix/s/$/ minlen=8 remember=5/' /etc/pam.d/common-password
-sudo sed -i '/cracklib/s/$/ ucredit=-1 lcredit=-1 dcredit=-1 ocredit=-/' /etc/pam.d/common-password
-sudo sed -i '/pam_tally2/s/$/ deny=5 unlock_time=1800/' /etc/pam.d/common-auth
-chpasswd
+#sudo apt-get install libpam-cracklib
+#sudo sed -i '/pam_unix/s/$/ minlen=8 remember=5/' /etc/pam.d/common-password
+#sudo sed -i '/cracklib/s/$/ ucredit=-1 lcredit=-1 dcredit=-1 ocredit=-/' /etc/pam.d/common-password
+#sudo sed -i '/pam_tally2/s/$/ deny=5 unlock_time=1800/' /etc/pam.d/common-auth
+#chpasswd
 # SecE: b to d
 # SecE: vii
 # SecE: 4
