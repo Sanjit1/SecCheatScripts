@@ -1,11 +1,22 @@
-authorizedUserNames=('batman' 'std' 'chowman')
-unauthorizedUserNames=('joker' 'banana' 'homer' 'jonathan')
-badPasswordPPl=('chowman')
-combinedUsers=('batman' 'std' 'chowman' 'joker' 'banana' 'homer' 'jonathan')
+authorizedUserNames=()
+unauthorizedUserNames=()
+badPasswordPPl=()
+peopleToAdd=()
+combinedUsers=("${unauthorizedUserNames[@]}" "${authorizedUserNames[@]}")
 
 sudo bash -c 'cat <<EOT >> /etc/lightdm/users.conf
 allow-guests=false
 EOT'
+
+
+sudo apt-get update
+sudo apt-get upgrade
+
+
+for i in "${peopleToAdd[@]}"
+do
+    sudo useradd $i
+done
 
 
 l=$(grep "^UID_MIN" /etc/login.defs)
@@ -29,12 +40,54 @@ do
     fi
 done
 
-sudo apt-get install gksu wget
+sysctl -n net.ipv4.tcp_syncookies
+echo "net.ipv6.conf.all.disable_ipv6 = 1" | sudo tee -a /etc/sysctl.conf
+echo 0 | sudo tee /proc/sys/net/ipv4/ip_forward
+echo "nospoof on" | sudo tee -a /etc/host.conf
 
-wget https://www.thefanclub.co.za/sites/default/files/public/downloads/ubuntu-server-secure.tar.gz
+sudo apt-get autoclean
+sudo apt-get install --only-upgrade bash
 
-sudo tar -zxvf ubuntu-server-secure.tar.gz
+sudo ufw enable
+sudo ufw default deny incoming
+sudo ufw allow from 127.0.0.1 to any port 631
+sudo ufw allow from 127.0.0.1 to any port 53
+sudo ufw allow ssh
+sudo ufw allow http
+sudo ufw status verbose
+read -n1 -r -p "Press space to continue..." key
 
-sudo chmod +x ubuntu-server-secure/ubuntu-server-secure.sh
+echo "tmpfs     /run/shm     tmpfs     defaults,noexec,nosuid     0     0"
+read -n1 -r -p "Press space to continue..." key
+sudo nano /etc/fstab
 
-gksudo sh ubuntu-server-secure/ubuntu-server-secure.sh
+echo "Port <ENTER YOUR PORT>"
+echo "Protocol 2"
+echo "PermitRootLogin no"
+echo "DebianBanner no"
+read -n1 -r -p "Press space to continue..." key
+sudo nano /etc/ssh/sshd_config
+
+echo "sudo vi /etc/sysctl.conf find on the page"
+read -n1 -r -p "Press" key
+sudo nano /etc/sysctl.conf
+
+echo "recursion no;"
+echo "version quote Not Disclosed quote;"
+read -n1 -r -p "Pres" key
+sudo nano /etc/bind/named.conf.options
+
+echo "order bind,hosts"
+ehco "nospoof on"
+read -n1 -r -p "enter" key
+sudo nano /etc/host.conf
+
+
+sudo service bind9 restart
+sudo sysctl -p
+sudo service ssh restart
+
+
+sudo apt-get install tiger tripwire
+
+sudo less /var/log/tiger/security.report.*
